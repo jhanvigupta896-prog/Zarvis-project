@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusIQ | Smart Campus Command Center</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============================= -->
+    <!-- BACKGROUND DECORATION -->
+    <!-- ============================= -->
+
+    <div class="background-grid"></div>
+    <div class="scan-line"></div>
+
+    <!-- ============================= -->
+    <!-- LOGIN PAGE -->
+    <!-- ============================= -->
+
+    <section id="loginPage" class="login-page">
+
+        <div class="login-background">
+
+            <div class="energy-ring ring-one"></div>
+            <div class="energy-ring ring-two"></div>
+            <div class="energy-ring ring-three"></div>
+
+            <!-- Captain-inspired shield -->
+            <div class="hero-shield shield-left">
+                <div class="shield-star">★</div>
+            </div>
+
+            <!-- Thor-inspired hammer -->
+            <div class="thor-hammer">
+                <div class="hammer-head"></div>
+                <div class="hammer-handle"></div>
+            </div>
+
+            <!-- Iron Man-inspired reactor -->
+            <div class="reactor">
+                <div class="reactor-core"></div>
+                <div class="reactor-ring"></div>
+                <div class="reactor-ring reactor-ring-two"></div>
+            </div>
+
+            <!-- Second shield -->
+            <div class="hero-shield shield-right">
+                <div class="shield-star">★</div>
+            </div>
+
+        </div>
+
+        <div class="login-card">
+
+            <div class="brand-symbol">
+                <div class="mini-reactor"></div>
+            </div>
+
+            <div class="login-eyebrow">
+                SMART CAMPUS INTELLIGENCE SYSTEM
+            </div>
+
+            <h1 class="login-title">
+                CAMPUS<span>IQ</span>
+            </h1>
+
+            <p class="login-tagline">
+                ASSEMBLE. REPORT. RESOLVE.
+            </p>
+
+            <div class="login-divider"></div>
+
+            <h2>SECURE ACCESS</h2>
+
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <label for="loginEmail">EMAIL</label>
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="Enter your campus email"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="loginPassword">PASSWORD</label>
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="Enter password"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="primary-button login-button">
+                    <span>ENTER CAMPUSIQ</span>
+                    <span>→</span>
+                </button>
+
+            </form>
+
+            <div id="loginMessage" class="login-message"></div>
+
+            <div class="demo-credentials">
+
+                <p>DEMO ACCESS</p>
+
+                <div class="demo-row">
+                    <span>STUDENT</span>
+                    <code>student@campusiq.com</code>
+                </div>
+
+                <div class="demo-row">
+                    <span>ADMIN</span>
+                    <code>admin@campusiq.com</code>
+                </div>
+
+                <small>
+                    Student password: <b>student123</b>
+                    &nbsp; | &nbsp;
+                    Admin password: <b>admin123</b>
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ============================= -->
+    <!-- MAIN APPLICATION -->
+    <!-- ============================= -->
+
+    <div id="app" hidden>
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div class="header-brand">
+
+                <div class="header-reactor">
+                    <div></div>
+                </div>
+
+                <div>
+                    <h1>CAMPUS<span>IQ</span></h1>
+                    <p>SMART CAMPUS COMMAND SYSTEM</p>
+                </div>
+
+            </div>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                SYSTEM ONLINE
+            </div>
+
+        </header>
+
+
+        <!-- NAVIGATION -->
+
+        <nav id="mainNav" class="main-nav">
+
+            <button onclick="openStudentPortal()">
+                STUDENT PORTAL
+            </button>
+
+            <button id="adminNavButton"
+                    onclick="openAdminPortal()"
+                    style="display:none;">
+                ADMIN COMMAND
+            </button>
+
+            <button onclick="showPage('report')">
+                REPORT ISSUE
+            </button>
+
+            <button onclick="showPage('track')">
+                TRACK TICKET
+            </button>
+
+            <button onclick="logoutUser()" class="logout-button">
+                LOGOUT
+            </button>
+
+        </nav>
+
+
+        <main class="main-container">
+
+            <!-- ============================= -->
+            <!-- STUDENT PORTAL -->
+            <!-- ============================= -->
+
+            <section id="studentPortal" class="page-section">
+
+                <div class="hero-section">
+
+                    <div>
+                        <p class="section-label">STUDENT COMMAND CENTER</p>
+
+                        <h2>
+                            YOUR CAMPUS.
+                            <span>YOUR VOICE.</span>
+                        </h2>
+
+                        <p class="hero-description">
+                            Report campus problems, receive intelligent
+                            routing, and track every issue until resolution.
+                        </p>
+
+                        <button class="primary-button"
+                                onclick="showPage('report')">
+                            REPORT AN ISSUE →
+                        </button>
+                    </div>
+
+                    <div class="hero-weapons">
+
+                        <div class="floating-shield small-shield">
+                            ★
+                        </div>
+
+                        <div class="floating-hammer">
+                            ⚡
+                        </div>
+
+                        <div class="floating-reactor">
+                            <div></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STUDENT STATS -->
+
+                <div class="stats">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">◈</div>
+                        <h3 id="studentTotal">0</h3>
+                        <p>MY TICKETS</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">◉</div>
+                        <h3 id="studentActive">0</h3>
+                        <p>ACTIVE</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">✓</div>
+                        <h3 id="studentResolved">0</h3>
+                        <p>RESOLVED</p>
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <p class="section-label">MISSION LOG</p>
+                            <h2>MY RECENT ISSUES</h2>
+                        </div>
+
+                        <button class="secondary-button"
+                                onclick="showPage('report')">
+                            + NEW ISSUE
+                        </button>
+                    </div>
+
+                    <div id="studentTicketList">
+                        <div class="empty-state">
+                            No issues reported yet.
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ============================= -->
+            <!-- REPORT ISSUE -->
+            <!-- ============================= -->
+
+            <section id="report" class="page-section" hidden>
+
+                <button class="back-button"
+                        onclick="goBackToPortal()">
+                    ← BACK TO PORTAL
+                </button>
+
+                <div class="page-title">
+
+                    <p class="section-label">
+                        CAMPUS ISSUE REPORTING
+                    </p>
+
+                    <h2>
+                        REPORT <span>AN ISSUE</span>
+                    </h2>
+
+                    <p>
+                        Our intelligent triage system will analyse
+                        your issue and recommend the appropriate department.
+                    </p>
+
+                </div>
+
+
+                <div class="report-layout">
+
+                    <form id="ticketForm" class="form-panel">
+
+                        <div class="input-group">
+                            <label for="studentName">
+                                STUDENT NAME
+                            </label>
+
+                            <input
+                                type="text"
+                                id="studentName"
+                                placeholder="Enter your name"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+                            <label for="location">
+                                LOCATION
+                            </label>
+
+                            <input
+                                type="text"
+                                id="location"
+                                placeholder="e.g. Block A, Lab 204"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="category">
+                                CATEGORY
+                            </label>
+
+                            <select id="category" required>
+
+                                <option value="">
+                                    Select category
+                                </option>
+
+                                <option value="Infrastructure">
+                                    Infrastructure
+                                </option>
+
+                                <option value="IT">
+                                    IT / Network
+                                </option>
+
+                                <option value="Electrical">
+                                    Electrical
+                                </option>
+
+                                <option value="Plumbing">
+                                    Plumbing
+                                </option>
+
+                                <option value="Cleanliness">
+                                    Cleanliness
+                                </option>
+
+                                <option value="Classroom Equipment">
+                                    Classroom Equipment
+                                </option>
+
+                                <option value="Safety">
+                                    Safety
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="description">
+                                DESCRIBE THE ISSUE
+                            </label>
+
+                            <textarea
+                                id="description"
+                                rows="6"
+                                placeholder="Describe what happened..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            onclick="analyzeIssue()">
+
+                            ⚡ ANALYSE ISSUE
+
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="primary-button">
+
+                            GENERATE TICKET →
+
+                        </button>
+
+                    </form>
+
+
+                    <!-- AI PANEL -->
+
+                    <div id="aiPanel" class="ai-panel">
+
+                        <div class="ai-header">
+
+                            <div class="ai-orb">
+                                <div></div>
+                            </div>
+
+                            <div>
+                                <p class="section-label">
+                                    INTELLIGENT TRIAGE
+                                </p>
+
+                                <h3>
+                                    CAMPUSIQ AI
+                                </h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="ai-status">
+                            ANALYSIS ENGINE READY
+                        </div>
+
+
+                        <div class="ai-result">
+
+                            <div>
+                                <span>CATEGORY</span>
+                                <strong id="aiCategory">
+                                    —
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>DEPARTMENT</span>
+                                <strong id="aiDepartment">
+                                    —
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>PRIORITY</span>
+                                <strong id="aiPriority">
+                                    —
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>RECOMMENDED ACTION</span>
+                                <strong id="aiAction">
+                                    —
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ============================= -->
+            <!-- TRACK TICKET -->
+            <!-- ============================= -->
+
+            <section id="track" class="page-section" hidden>
+
+                <button class="back-button"
+                        onclick="goBackToPortal()">
+                    ← BACK TO PORTAL
+                </button>
+
+                <div class="page-title">
+
+                    <p class="section-label">
+                        LIVE ISSUE MONITOR
+                    </p>
+
+                    <h2>
+                        TRACK <span>TICKET</span>
+                    </h2>
+
+                    <p>
+                        Enter your CampusIQ ticket ID to view its current status.
+                    </p>
+
+                </div>
+
+
+                <div class="track-box">
+
+                    <input
+                        type="text"
+                        id="trackTicketId"
+                        placeholder="e.g. CI-1234"
+                    >
+
+                    <button
+                        class="primary-button"
+                        onclick="trackTicket()">
+
+                        TRACK →
+
+                    </button>
+
+                </div>
+
+
+                <div id="trackResult"></div>
+
+            </section>
+
+
+            <!-- ============================= -->
+            <!-- ADMIN DASHBOARD -->
+            <!-- ============================= -->
+
+            <section id="admin" class="page-section" hidden>
+
+                <div class="page-title">
+
+                    <p class="section-label">
+                        AUTHORIZED ADMIN ACCESS
+                    </p>
+
+                    <h2>
+                        CAMPUS <span>COMMAND CENTER</span>
+                    </h2>
+
+                    <p>
+                        Monitor, filter and resolve campus issues in real time.
+                    </p>
+
+                </div>
+
+
+                <!-- ADMIN STATS -->
+
+                <div class="stats">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">◈</div>
+                        <h3 id="totalCount">0</h3>
+                        <p>TOTAL ISSUES</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">!</div>
+                        <h3 id="pendingCount">0</h3>
+                        <p>PENDING</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">↻</div>
+                        <h3 id="progressCount">0</h3>
+                        <p>IN PROGRESS</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">✓</div>
+                        <h3 id="resolvedCount">0</h3>
+                        <p>RESOLVED</p>
+                    </div>
+
+                </div>
+
+
+                <!-- FILTERS -->
+
+                <div class="filter-panel">
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            ALL STATUS
+                        </option>
+
+                        <option value="Pending">
+                            PENDING
+                        </option>
+
+                        <option value="In Progress">
+                            IN PROGRESS
+                        </option>
+
+                        <option value="Resolved">
+                            RESOLVED
+                        </option>
+
+                    </select>
+
+
+                    <select id="priorityFilter">
+
+                        <option value="all">
+                            ALL PRIORITIES
+                        </option>
+
+                        <option value="HIGH">
+                            HIGH
+                        </option>
+
+                        <option value="MEDIUM">
+                            MEDIUM
+                        </option>
+
+                        <option value="LOW">
+                            LOW
+                        </option>
+
+                    </select>
+
+
+                    <select id="departmentFilter">
+
+                        <option value="all">
+                            ALL DEPARTMENTS
+                        </option>
+
+                        <option value="IT Department">
+                            IT DEPARTMENT
+                        </option>
+
+                        <option value="Maintenance">
+                            MAINTENANCE
+                        </option>
+
+                        <option value="Electrical Maintenance">
+                            ELECTRICAL
+                        </option>
+
+                        <option value="Technical Support">
+                            TECHNICAL SUPPORT
+                        </option>
+
+                        <option value="Housekeeping">
+                            HOUSEKEEPING
+                        </option>
+
+                        <option value="Campus Safety">
+                            CAMPUS SAFETY
+                        </option>
+
+                        <option value="Campus Operations">
+                            CAMPUS OPERATIONS
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <p class="section-label">
+                                LIVE OPERATIONS
+                            </p>
+
+                            <h2>
+                                CAMPUS ISSUES
+                            </h2>
+                        </div>
+
+                    </div>
+
+
+                    <div id="ticketList">
+                        <div class="empty-state">
+                            No tickets yet.
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <div class="footer-reactor"></div>
+
+            <p>
+                CAMPUSIQ © 2026
+            </p>
+
+            <span>
+                INTELLIGENT CAMPUS ISSUE MANAGEMENT
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
+</html>
